@@ -18,33 +18,72 @@ import './App.css';
 import {useState, useEffect} from 'react'
 import Card from './Components/Card'
 
+let lastClicked = []
+
 function App() {
 
   const [currentScore, setCurrentScore] = useState(0)
   const [bestScore, setBestScore] = useState(0)
+  
+  const updateScore = () => {
+    setCurrentScore((prevScore) => prevScore + 1)
+  }
 
+  const updateBestScore = () => {
+    if (currentScore > bestScore) {
+      setBestScore(currentScore)
+    }
+  }
+
+  const playGame = (event) => {
+    console.log(lastClicked)
+    if (lastClicked.includes(event.target.id)) {
+      updateBestScore();
+      setCurrentScore(0);
+      lastClicked = [];
+    } else {
+      updateScore();
+      updateBestScore();
+      lastClicked.push(event.target.id)
+    }
+  }
+
+  const [cardArray, setCardArray] = useState([
+    <Card title="Baltimore Ravens" image={Ravens} onClick={playGame} alt="NFL team, Baltimore Ravens, logo"/>,
+    <Card title="Cincinnati Bengals" image={Bengals} onClick={playGame} alt="NFL team, Cincinnati Bengals, logo"/>,
+    <Card title="Denver Broncos" image={Broncos} onClick={playGame} alt="NFL team, Denver Broncos, logo"/>,
+    <Card title="Buffalo Bills" image={Bills} onClick={playGame} alt="NFL team, Buffalo Bills, logo"/>,
+    <Card title="Dallas Cowboys" image={Cowboys} onClick={playGame} alt="NFL team, Dallas Cowboys, logo"/>,
+    <Card title="Philadelphia Eagles" image={Eagles} onClick={playGame} alt="NFL team, Philadelphia Eagles, logo"/>,
+    <Card title="Atlanta Falcons" image={Falcons} onClick={playGame} alt="NFL team, Atlanta Falcons, logo"/>,
+    <Card title="Indianapolis Colts" image={Colts} onClick={playGame} alt="NFL team, Indianapolis Colts, logo"/>,
+    <Card title="Kansas City Chiefs" image={Chiefs} onClick={playGame} alt="NFL team, Kansas City Chiefs, logo"/>,
+    <Card title="Minnesota Vikings" image={Vikings} onClick={playGame} alt="NFL team, Minnesota Vikings, logo"/>,
+    <Card title="New England Patriots" image={Patriots} onClick={playGame} alt="NFL team, New England Patriots, logo"/>,
+    <Card title="New York Giants" image={Giants} onClick={playGame} alt="NFL team, New York Giants, logo"/>,
+    <Card title="Green Bay Packers" image={Packers} onClick={playGame} alt="NFL team, Green Bay Packers, logo"/>,
+    <Card title="Pittsburgh Steelers" image={Steelers} onClick={playGame} alt="NFL team, Pittsburgh Steelers, logo"/>,
+    <Card title="Tampa Bay Buccaneers" image={Buccs}  onClick={playGame} alt="NFL team, Tampa Bay Buccaneers, logo"/>,
+    <Card title="Washington Commanders" image={Commanders} onClick={playGame} alt="NFL team, Washington Commanders, logo"/>
+    ])
+
+
+  const randomizeArray = (array) => {
+    setCardArray(array.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value))
+  }
+
+  useEffect(() => {
+    updateBestScore();
+    randomizeArray(cardArray)
+  }, [currentScore])
 
   return (
     <div className="App">
+      <p>Current Score: {currentScore}  || Best Score: {bestScore}</p>
         <h1 id="gameTitle">Memory Card Game</h1>
       <div className='cardContainer'>
         <div className='cards'>
-          <Card title="Baltimore Ravens" image={Ravens} alt="NFL team, Baltimore Ravens, logo"/>
-          <Card title="Cincinnati Bengals" image={Bengals} alt="NFL team, Cincinnati Bengals, logo"/>
-          <Card title="Denver Broncos" image={Broncos} alt="NFL team, Denver Broncos, logo"/>
-          <Card title="Buffalo Bills" image={Bills} alt="NFL team, Buffalo Bills, logo"/>
-          <Card title="Dallas Cowboys" image={Cowboys} alt="NFL team, Dallas Cowboys, logo"/>
-          <Card title="Philadelphia Eagles" image={Eagles} alt="NFL team, Philadelphia Eagles, logo"/>
-          <Card title="Atlanta Falcons" image={Falcons} alt="NFL team, Atlanta Falcons, logo"/>
-          <Card title="Indianapolis Colts" image={Colts} alt="NFL team, Indianapolis Colts, logo"/>
-          <Card title="Kansas City Chiefs" image={Chiefs} alt="NFL team, Kansas City Chiefs, logo"/>
-          <Card title="Minnesota Vikings" image={Vikings} alt="NFL team, Minnesota Vikings, logo"/>
-          <Card title="New England Patriots" image={Patriots} alt="NFL team, New England Patriots, logo"/>
-          <Card title="New York Giants" image={Giants} alt="NFL team, New York Giants, logo"/>
-          <Card title="Green Bay Packers" image={Packers} alt="NFL team, Green Bay Packers, logo"/>
-          <Card title="Pittsburgh Steelers" image={Steelers} alt="NFL team, Pittsburgh Steelers, logo"/>
-          <Card title="Tampa Bay Buccaneers" image={Buccs} alt="NFL team, Tampa Bay Buccaneers, logo"/>
-          <Card title="Washington Commanders" image={Commanders} alt="NFL team, Washington Commanders, logo"/>
+          {cardArray}
         </div>
       </div>
     </div>

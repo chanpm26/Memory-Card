@@ -36,7 +36,6 @@ function App() {
   }
 
   const playGame = (event) => {
-    console.log(lastClicked)
     if (lastClicked.includes(event.target.id)) {
       updateBestScore();
       setCurrentScore(0);
@@ -80,7 +79,7 @@ function App() {
   return (
     <div className="App">
       <p>Current Score: {currentScore}  || Best Score: {bestScore}</p>
-        <h1 id="gameTitle">Memory Card Game</h1>
+        <h1 id="gameTitle">Don't Pick The Same Card Twice</h1>
       <div className='cardContainer'>
         <div className='cards'>
           {cardArray}

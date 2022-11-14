@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Memory-Card/static/css/main.7d785b2e.css",
+    "main.js": "/Memory-Card/static/js/main.01761380.js",
+    "static/media/minnesota-vikings-logo-transparent.png": "/Memory-Card/static/media/minnesota-vikings-logo-transparent.4fd2c3a7f7b01e32adee.png",
+    "static/media/Buccs.png": "/Memory-Card/static/media/Buccs.90f5c0d6005823ea0433.png",
+    "static/media/Colts.png": "/Memory-Card/static/media/Colts.9d46b501855305362bb6.png",
+    "static/media/dallas-cowboys-logo-22.png": "/Memory-Card/static/media/dallas-cowboys-logo-22.2b504d4ee695c99c6f7f.png",
+    "static/media/buffalo-bills-logo-transparent.png": "/Memory-Card/static/media/buffalo-bills-logo-transparent.4abc5f81c3bbd4f5b318.png",
+    "static/media/Commanders.png": "/Memory-Card/static/media/Commanders.d5db687542a51d55f167.png",
+    "static/media/Giants.png": "/Memory-Card/static/media/Giants.2687504935f0eb1c9319.png",
+    "static/media/Baltimore-Ravens-logo.png": "/Memory-Card/static/media/Baltimore-Ravens-logo.de9f422fd686a872bac6.png",
+    "static/media/nfl-field.jpg": "/Memory-Card/static/media/nfl-field.7529c7f4f4f8430a71cc.jpg",
+    "static/media/Patriots.png": "/Memory-Card/static/media/Patriots.98be16e51ebd7166fbf8.png",
+    "index.html": "/Memory-Card/index.html",
+    "main.7d785b2e.css.map": "/Memory-Card/static/css/main.7d785b2e.css.map",
+    "main.01761380.js.map": "/Memory-Card/static/js/main.01761380.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7d785b2e.css",
+    "static/js/main.01761380.js"
+  ]
+}
